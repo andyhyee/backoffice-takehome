@@ -15,7 +15,7 @@ public class UndertowJaxrsServer {
 	public static Undertow initializeServer() throws ServletException {
 		//Add an HTTP listener bound to port 50001 and listing to all
 		Undertow server = Undertow.builder()
-                .addHttpListener(50001, "0.0.0.0")
+                .addHttpListener(50002, "0.0.0.0")
                 .setHandler(buildDeploymentManager())
                 .build();
 		
