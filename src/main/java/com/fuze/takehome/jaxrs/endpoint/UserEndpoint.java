@@ -27,7 +27,8 @@ public class UserEndpoint {
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Consumes({ MediaType.APPLICATION_JSON })	
 	public User create(@Valid @NotNull User entity) {
-			return service.create(entity);
+		//REVIEW: Fixed indentation formatting.
+		return service.create(entity);
 	}
 	
 	@GET
