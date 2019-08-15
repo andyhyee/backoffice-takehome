@@ -45,19 +45,13 @@ CREATE TABLE IF NOT EXISTS takeHome.users (
   mobile_number VARCHAR(20) NULL,
   fax_number VARCHAR(20) NULL,
   active BOOLEAN NOT NULL,
-  department_id BIGINT NULL,
   PRIMARY KEY (id),
   CONSTRAINT fk_users_customers1
     FOREIGN KEY (customer_id)
     REFERENCES takeHome.customers (id)
-    ON DELETE CASCADE,
-  CONSTRAINT fk_users_departments1
-    FOREIGN KEY (department_id)
-    REFERENCES takeHome.departments (id)
     ON DELETE CASCADE);
 
 CREATE INDEX IF NOT EXISTS fk_users_customers1_idx ON takeHome.users (customer_id ASC);
-CREATE INDEX IF NOT EXISTS fk_users_departments1_idx ON takeHome.users (department_id ASC);
 
 -- -----------------------------------------------------
 -- Table takeHome.departments_users

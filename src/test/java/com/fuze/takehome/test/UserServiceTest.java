@@ -5,11 +5,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-
-import java.util.List;
+import java.util.Arrays;
 
 import javax.inject.Inject;
-import javax.validation.constraints.NotNull;
 import javax.ws.rs.NotFoundException;
 
 import org.junit.Test;
@@ -36,7 +34,6 @@ import com.fuze.takehome.service.UserService;
  */
 public class UserServiceTest extends AbstractEntityTest {
 
-  private static final long EXISTING_DEPARTMENT_ID = 1L;
   private static final long EXISTING_USER_ID = 0;
   private static final long NON_EXISTENT_USER_ID = 9999999;
   private static final long DELETE_EXISTING_USER_ID = 1;
@@ -47,7 +44,7 @@ public class UserServiceTest extends AbstractEntityTest {
   @Test
   public void create_userWithMinimalFields_userWithNewIdAndOtherFieldsEqual() {
     User newUser = new User().withActive(true).withCustomerId(0L).withUserName("username")
-        .withDepartmentId(EXISTING_DEPARTMENT_ID);
+        .withDepartments(Arrays.asList(new Long[] {0L}));
 
     User createdUser = service.create(newUser);
 
@@ -55,7 +52,7 @@ public class UserServiceTest extends AbstractEntityTest {
     assertEquals(newUser.isActive(), createdUser.isActive());
     assertEquals(newUser.getCustomerId(), createdUser.getCustomerId());
     assertEquals(newUser.getUserName(), createdUser.getUserName());
-    assertEquals(newUser.getDepartmentId(), createdUser.getDepartmentId());
+    assertEquals(newUser.getDepartments(), createdUser.getDepartments());
   }
   
   @Test

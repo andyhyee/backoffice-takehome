@@ -1,5 +1,7 @@
 package com.fuze.takehome.util;
 
+import java.util.Arrays;
+
 import javax.inject.Inject;
 
 import com.fuze.takehome.model.Customer;
@@ -43,16 +45,22 @@ public class DummyDataGenerator
 	private void generateDepartments()
 	{
 		departmentService.create(new Department()
-                        				.withActive(true)
-                        				.withCustomerId(0L)
-                        				.withDescription("Engineering Group 1")
-                        				.withName("Eng"));
+				.withActive(true)
+				.withCustomerId(0L)
+				.withDescription("Engineering Group 1")
+				.withName("Eng"));
 		
 		departmentService.create(new Department()
 				.withActive(true)
 				.withCustomerId(0L)
 				.withDescription("Engineering Group 2")
 				.withName("Eng"));
+
+   departmentService.create(new Department()
+        .withActive(true)
+        .withCustomerId(0L)
+        .withDescription("Engineering Group 3")
+        .withName("Eng"));
 	}
 	
 	private void generateUsers() 
@@ -60,7 +68,7 @@ public class DummyDataGenerator
 		userService.create(new User()
 				.withActive(true)
 				.withCustomerId(0L)
-				.withDepartmentId(0L)
+				.withDepartments(Arrays.asList(new Long[]{0L ,1L}))
 				.withEmail("r.castorena@toyota.ca")
 				.withFirstName("Randy")
 				.withLastName("Castorena")
@@ -71,6 +79,7 @@ public class DummyDataGenerator
 		userService.create(new User()
 				.withActive(true)
 				.withCustomerId(0L)
+        .withDepartments(Arrays.asList(new Long[]{1L}))
 				.withEmail("w.hertlein@toyota.ca")
 				.withFirstName("Wes")
 				.withLastName("Hertlein")
