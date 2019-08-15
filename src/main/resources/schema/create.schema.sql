@@ -59,4 +59,23 @@ CREATE TABLE IF NOT EXISTS takeHome.users (
 CREATE INDEX IF NOT EXISTS fk_users_customers1_idx ON takeHome.users (customer_id ASC);
 CREATE INDEX IF NOT EXISTS fk_users_departments1_idx ON takeHome.users (department_id ASC);
 
+-- -----------------------------------------------------
+-- Table takeHome.departments_users
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS takeHome.departments_users (
+  department_id BIGINT NOT NULL,
+  user_id BIGINT NOT NULL,
+  PRIMARY KEY (department_id, user_id),
+  CONSTRAINT fk_depts_users_departments1
+    FOREIGN KEY (department_id)
+    REFERENCES takeHome.departments (id)
+    ON DELETE CASCADE,
+  CONSTRAINT fk_depts_users_users1
+    FOREIGN KEY (user_id)
+    REFERENCES takeHome.users (id)
+    ON DELETE CASCADE);
+
+CREATE INDEX IF NOT EXISTS fk_depts_users_users1_idx ON takeHome.departments_users (user_id ASC);
+CREATE INDEX IF NOT EXISTS fk_depts_users_departments1_idx ON takeHome.departments_users (department_id ASC);
+    
 commit;
