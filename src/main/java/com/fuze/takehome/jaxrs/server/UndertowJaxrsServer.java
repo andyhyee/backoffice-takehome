@@ -13,7 +13,7 @@ import io.undertow.servlet.api.DeploymentManager;
 public class UndertowJaxrsServer {
 	
 	public static Undertow initializeServer() throws ServletException {
-		//Add an HTTP listener bound to port 50001 and listing to all
+		//Add an HTTP listener bound to port 50002 and listing to all
 		Undertow server = Undertow.builder()
                 .addHttpListener(50002, "0.0.0.0")
                 .setHandler(buildDeploymentManager())
