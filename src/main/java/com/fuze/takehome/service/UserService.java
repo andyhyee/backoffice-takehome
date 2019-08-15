@@ -29,6 +29,7 @@ public class UserService {
 	@Transactional
 	public User create(User user) {
 		mapper.create(user);
+		mapper.createDepartmentRelationships(user.getId(), user.getDepartments());
 		return user;		
 	}
 
