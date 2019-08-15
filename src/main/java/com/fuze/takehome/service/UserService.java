@@ -1,7 +1,6 @@
 package com.fuze.takehome.service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,6 +19,7 @@ import com.fuze.takehome.mybatis.UserMapper;
 //Some blocks are started next line and some blocks are started on the same line. 
 //I have generally not changed these. 
 
+//REVIEW: [MUST] There is no unittest for this class.
 public class UserService {
   private static final Logger log = LoggerFactory.getLogger(UserService.class);
   
